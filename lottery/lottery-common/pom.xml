@@ -9,19 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>lottery-infrastructure</artifactId>
     <packaging>jar</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.1.4</version>
-        </dependency>
-    </dependencies>
+    <artifactId>lottery-common</artifactId>
 
     <build>
-        <finalName>lottery-infrastructure</finalName>
+        <finalName>lottery-common</finalName>
         <plugins>
             <!-- 编译plugin -->
             <plugin>

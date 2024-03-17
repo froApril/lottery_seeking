@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    username: root
+    password: 199665
+    url: jdbc:mysql://127.0.0.1:3306/lottery?useUnicode=true&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver # need to use com.mysql.cj.jdbc.Driver when the mybatis version higher than 8.0
+
+mybatis:
+  mapper-locations: classpath:/mybatis/mapper/*.xml
+  config-location:  classpath:/mybatis/config/mybatis-config.xml
+
+dubbo:
+  application:
+    name: Lottery
+    version: 1.0.0
+  registry:
+    address: N/A #multicast://224.5.6.7:1234
+  protocol:
+    name: dubbo
+    port: 20880 # make sure the port number is equal to the test
+  scan:
+    base-packages: cn.itedus.lottery.rpc
