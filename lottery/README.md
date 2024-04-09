@@ -1,4 +1,4 @@
-# xfg-frame-archetype - DDD 脚手架
+# xfg-frame-archetype - DDD
 
 
 md5 scaffold-lite-1.0.pom > scaffold-lite-1.0.pom.md5
