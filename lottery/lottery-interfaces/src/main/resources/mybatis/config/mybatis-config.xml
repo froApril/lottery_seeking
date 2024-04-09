@@ -5,5 +5,8 @@
 <configuration>
     <typeAliases>
         <package name="lottery.infrastructure.po.activity.Activity"/>
+        <package name="lottery.infrastructure.po.award.Award"/>
+        <package name="lottery.infrastructure.po.strategy.Strategy"/>
+        <package name="lottery.infrastructure.po.strategy.StrategyDetail"/>
     </typeAliases>
 </configuration>
