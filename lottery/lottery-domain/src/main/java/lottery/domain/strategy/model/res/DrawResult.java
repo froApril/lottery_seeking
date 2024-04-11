@@ -1,23 +1,26 @@
 package lottery.domain.strategy.model.res;
 
+import lottery.common.Constants;
+import lottery.domain.strategy.model.vo.DrawAwardInfo;
+
 public class DrawResult {
 
     private String uId;
 
     private Long strategyId;
 
-    private String rewardId;
+    private Integer drawState = Constants.DrawState.FAIL.getCode();
 
-    private String awardName;
+    private DrawAwardInfo drawAwardInfo;
 
-    public DrawResult() {
+    public DrawResult(String uid, Long strategyId, int code) {
     }
 
-    public DrawResult(String uId, Long strategyId, String rewardId, String awardName) {
+    public DrawResult(String uId, Long strategyId, Integer drawState, DrawAwardInfo drawAwardInfo) {
         this.uId = uId;
         this.strategyId = strategyId;
-        this.rewardId = rewardId;
-        this.awardName = awardName;
+        this.drawState = drawState;
+        this.drawAwardInfo = drawAwardInfo;
     }
 
     public String getuId() {
@@ -36,20 +39,20 @@ public class DrawResult {
         this.strategyId = strategyId;
     }
 
-    public String getRewardId() {
-        return rewardId;
+    public Integer getDrawState() {
+        return drawState;
     }
 
-    public void setRewardId(String rewardId) {
-        this.rewardId = rewardId;
+    public void setDrawState(Integer drawState) {
+        this.drawState = drawState;
     }
 
-    public String getAwardName() {
-        return awardName;
+    public DrawAwardInfo getDrawAwardInfo() {
+        return drawAwardInfo;
     }
 
-    public void setAwardName(String awardName) {
-        this.awardName = awardName;
+    public void setDrawAwardInfo(DrawAwardInfo drawAwardInfo) {
+        this.drawAwardInfo = drawAwardInfo;
     }
 
     @Override
@@ -57,8 +60,8 @@ public class DrawResult {
         return "DrawResult{" +
                 "uId='" + uId + '\'' +
                 ", strategyId=" + strategyId +
-                ", rewardId='" + rewardId + '\'' +
-                ", awardName='" + awardName + '\'' +
+                ", drawState=" + drawState +
+                ", drawAwardInfo=" + drawAwardInfo +
                 '}';
     }
 }

@@ -3,6 +3,7 @@ package lottery.domain.strategy.service.algorithm.impl;
 import lottery.common.StrategyModeEnum;
 import lottery.domain.strategy.annotation.StrategyMode;
 import lottery.domain.strategy.service.algorithm.BaseAlgorithm;
+import org.apache.ibatis.jdbc.Null;
 import org.springframework.stereotype.Component;
 
 import java.security.SecureRandom;
@@ -13,11 +14,11 @@ import java.util.List;
 public class SingleRateRandomDrawAlgorithm extends BaseAlgorithm {
 
     @Override
-    public String randomDraw(Long strategyId, List<String> excludeAwards) throws Exception {
+    public String randomDraw(Long strategyId, List<String> excludeAwards)  {
         String[] rateTuple = super.rateTupleMap.get(strategyId);
 
         if (rateTuple == null) {
-            throw new Exception("The strategy is not exists");
+            return null;
         }
 
         int randomVale = new SecureRandom().nextInt(100) + 1;
@@ -26,7 +27,7 @@ public class SingleRateRandomDrawAlgorithm extends BaseAlgorithm {
 
         String awardId = rateTuple[idx];
 
-        if (excludeAwards.contains(awardId)) {return "Not awarded";}
+        if (excludeAwards.contains(awardId)) {return null;}
         return awardId;
     }
 }
