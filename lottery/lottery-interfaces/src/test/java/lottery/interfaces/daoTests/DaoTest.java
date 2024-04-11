@@ -42,7 +42,7 @@ public class DaoTest {
 
         // pre insert a data into database with
         // 	1	10000	1	1	IPhone	IPhone	2024-04-08 00:00:00	2024-04-08 00:00:00
-        Award res = awardDao.queryAwardInfo("iphone");
+        Award res = awardDao.queryAwardInfo("1");
         logger.info(res.toString());
         assertNotNull(res);
         assertEquals(res.getId(), 1);

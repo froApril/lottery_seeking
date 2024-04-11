@@ -1,5 +1,6 @@
 package lottery.domain.strategy.service.algorithm;
 
+import lottery.common.Constants;
 import lottery.domain.strategy.model.vo.AwardRateInfo;
 
 import java.math.BigDecimal;
@@ -17,11 +18,25 @@ public abstract class BaseAlgorithm implements IDrawAlgorithm{
 
     protected Map<Long, List<AwardRateInfo>> awardRateInfoMap = new ConcurrentHashMap<>();
 
-    @Override
-    public void initRateTuple(Long strategyId, List<AwardRateInfo> awardRateInfoList) {
+    /**
+     * Init the awardRateInfoMap
+     * @param strategyId
+     * @param awardRateInfoList
+     */
+    private void initAwardRateInfoMap(Long strategyId, List<AwardRateInfo> awardRateInfoList) {
         awardRateInfoMap.put(strategyId, awardRateInfoList);
-        String[] rateTuple = rateTupleMap.computeIfAbsent(strategyId, k -> new String[RATE_TUPLE_LENGTH]);
+    }
 
+    @Override
+    public void initRateTuple(Long strategyId, Integer strategyMode, List<AwardRateInfo> awardRateInfoList) {
+
+        // whatever which strategy is used, the awards info and rates needs to be initialized
+        initAwardRateInfoMap(strategyId, awardRateInfoList);
+
+        // only single strategy needs a fibonacci hash
+        if (strategyMode.equals(Constants.Strategy.SINGLE.getCode())) return;
+
+        String[] rateTuple = rateTupleMap.computeIfAbsent(strategyId, k -> new String[RATE_TUPLE_LENGTH]);
 
         int cursorVal = 0;
         for (AwardRateInfo awardRateInfo : awardRateInfoList) {

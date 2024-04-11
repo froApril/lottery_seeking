@@ -26,6 +26,8 @@ public class StrategyDetail {
     // 修改时间
     private Date updateTime;
 
+    private String awardDesc;
+
     public Long getId() {
         return id;
     }
@@ -84,16 +86,25 @@ public class StrategyDetail {
         this.updateTime = updateTime;
     }
 
+    public String getAwardDesc() {
+        return awardDesc;
+    }
+
+    public void setAwardDesc(String awardDesc) {
+        this.awardDesc = awardDesc;
+    }
+
     @Override
     public String toString() {
         return "StrategyDetail{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", strategyId=" + strategyId +
                 ", awardId='" + awardId + '\'' +
-                ", awardCount='" + awardCount + '\'' +
+                ", awardCount=" + awardCount +
                 ", awardRate=" + awardRate +
-                ", createTime='" + createTime + '\'' +
-                ", updateTime='" + updateTime + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", awardDesc='" + awardDesc + '\'' +
                 '}';
     }
 }

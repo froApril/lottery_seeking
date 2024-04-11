@@ -1,6 +1,7 @@
 package lottery.interfaces.strategy;
 
 
+import lottery.common.Constants;
 import lottery.domain.strategy.model.vo.AwardRateInfo;
 import lottery.domain.strategy.service.algorithm.IDrawAlgorithm;
 import org.junit.Before;
@@ -31,7 +32,7 @@ public class DrawAlgorithmTest {
         strategyList.add(new AwardRateInfo("四等奖：AirPods", new BigDecimal("0.25")));
         strategyList.add(new AwardRateInfo("五等奖：充电宝", new BigDecimal("0.35")));
 
-        drawAlgorithm.initRateTuple(10001L, strategyList);
+        drawAlgorithm.initRateTuple(10001L, Constants.Strategy.SINGLE.getCode(), strategyList);
     }
 
     @Test

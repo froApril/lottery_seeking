@@ -16,9 +16,9 @@ public interface IDrawAlgorithm {
      *
      * so that with the random value for the award rate, we can get the award name within O(1)
      */
-    void initRateTuple(Long strategyId, List<AwardRateInfo> awardRateInfoList);
+    void initRateTuple(Long strategyId, Integer strategyMode, List<AwardRateInfo> awardRateInfoList);
 
-    String randomDraw(Long strategyId, List<String> excludeAwards) throws Exception;
+    String randomDraw(Long strategyId, List<String> excludeAwards);
 
     boolean isExistRateTuple(Long strategyId);
 }
