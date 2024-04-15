@@ -1,37 +1,31 @@
 package lottery.domain.strategy.model.vo;
 
+import lombok.Data;
+
 /**
  * @description:
  * @author：freddie
  * @date: 2024/4/11
  */
+@Data
 public class DrawAwardInfo {
 
-    private String rewardId;
+    private String awardId;
+
+    private Integer awardType;
 
     private String awardName;
+
+    private String awardContent;
+
 
     public DrawAwardInfo() {
     }
 
-    public DrawAwardInfo(String rewardId, String awardName) {
-        this.rewardId = rewardId;
+    public DrawAwardInfo(String awardId, Integer awardType, String awardName,String awardContent) {
+        this.awardId = awardId;
+        this.awardType = awardType;
         this.awardName = awardName;
-    }
-
-    public String getRewardId() {
-        return rewardId;
-    }
-
-    public void setRewardId(String rewardId) {
-        this.rewardId = rewardId;
-    }
-
-    public String getAwardName() {
-        return awardName;
-    }
-
-    public void setAwardName(String awardName) {
-        this.awardName = awardName;
+        this.awardContent = awardContent;
     }
 }
