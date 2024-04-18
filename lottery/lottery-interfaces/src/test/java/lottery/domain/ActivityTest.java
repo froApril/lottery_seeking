@@ -1,5 +1,6 @@
 package lottery.domain;
 
+import com.alibaba.fastjson.JSON;
 import lottery.common.Constants;
 import lottery.domain.activity.model.aggregates.ActivityRichConfig;
 import lottery.domain.activity.model.req.ActivityConfigReq;
@@ -8,10 +9,12 @@ import lottery.domain.activity.model.vo.AwardVO;
 import lottery.domain.activity.model.vo.StrategyDetailVO;
 import lottery.domain.activity.model.vo.StrategyVO;
 import lottery.domain.activity.service.deploy.IActivityDeploy;
-import lottery.infrastructure.dao.activity.IActivityDao;
+import lottery.domain.activity.service.stateflow.IStateHandler;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -33,9 +36,14 @@ public class ActivityTest {
 
     @Resource
     IActivityDeploy activityDeploy;
-//
+
+    @Resource
+    private IStateHandler stateHandler;
+
+    //
 //    @Resource
 //    private IS
+    private Logger logger = LoggerFactory.getLogger(ActivityTest.class);
 
     private Long activityId = 120981321L;
 
@@ -154,5 +162,13 @@ public class ActivityTest {
     @Test
     public void test_createActivity() {
         activityDeploy.createActivity(new ActivityConfigReq(activityId, activityRichConfig));
+    }
+
+    @Test
+    public void test_alterState() {
+        logger.info("提交审核，测试：{}", JSON.toJSONString(stateHandler.arraignment(activityId, Constants.ActivityState.EDIT)));
+        logger.info("审核通过，测试：{}", JSON.toJSONString(stateHandler.checkPass(activityId, Constants.ActivityState.ARRAIGNMENT)));
+        logger.info("运行活动，测试：{}", JSON.toJSONString(stateHandler.doing(activityId, Constants.ActivityState.PASS)));
+        logger.info("二次提审，测试：{}", JSON.toJSONString(stateHandler.checkPass(activityId, Constants.ActivityState.EDIT)));
     }
 }
