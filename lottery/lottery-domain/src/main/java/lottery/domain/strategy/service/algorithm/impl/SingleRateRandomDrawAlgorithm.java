@@ -3,7 +3,6 @@ package lottery.domain.strategy.service.algorithm.impl;
 import lottery.common.StrategyModeEnum;
 import lottery.domain.strategy.annotation.StrategyMode;
 import lottery.domain.strategy.service.algorithm.BaseAlgorithm;
-import org.apache.ibatis.jdbc.Null;
 import org.springframework.stereotype.Component;
 
 import java.security.SecureRandom;

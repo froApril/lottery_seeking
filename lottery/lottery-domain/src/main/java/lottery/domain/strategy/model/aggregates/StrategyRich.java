@@ -1,48 +1,37 @@
 package lottery.domain.strategy.model.aggregates;
 
-import lottery.infrastructure.po.strategy.Strategy;
-import lottery.infrastructure.po.strategy.StrategyDetail;
+import lombok.Data;
+import lottery.domain.strategy.model.vo.StrategyBriefVO;
+import lottery.domain.strategy.model.vo.StrategyDetailBriefVO;
 
 import java.util.List;
 
+@Data
 public class StrategyRich {
 
+    /**
+     * 策略ID
+     */
     private Long strategyId;
 
-    private Strategy strategy;
+    /**
+     * 策略配置
+     */
+    private StrategyBriefVO strategy;
 
-    private List<StrategyDetail> strategyDetailList;
-
-    public StrategyRich(Long strategyId, Strategy strategy, List<StrategyDetail> strategyDetailList) {
-        this.strategyId = strategyId;
-        this.strategy = strategy;
-        this.strategyDetailList = strategyDetailList;
-    }
+    /**
+     * 策略明细
+     */
+    private List<StrategyDetailBriefVO> strategyDetailList;
 
     public StrategyRich() {
     }
 
-    public Long getStrategyId() {
-        return strategyId;
-    }
-
-    public void setStrategyId(Long strategyId) {
+    public StrategyRich(Long strategyId, StrategyBriefVO strategy, List<StrategyDetailBriefVO> strategyDetailList) {
         this.strategyId = strategyId;
-    }
-
-    public Strategy getStrategy() {
-        return strategy;
-    }
-
-    public void setStrategy(Strategy strategy) {
         this.strategy = strategy;
-    }
-
-    public List<StrategyDetail> getStrategyDetailList() {
-        return strategyDetailList;
-    }
-
-    public void setStrategyDetailList(List<StrategyDetail> strategyDetailList) {
         this.strategyDetailList = strategyDetailList;
     }
+
+
 }
