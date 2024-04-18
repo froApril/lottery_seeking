@@ -1,8 +1,8 @@
 package lottery.domain.strategy.service.draw;
 
 import lottery.domain.strategy.model.aggregates.StrategyRich;
+import lottery.domain.strategy.model.vo.AwardBriefVO;
 import lottery.domain.strategy.repository.IStrategyRepository;
-import lottery.infrastructure.po.award.Award;
 
 import javax.annotation.Resource;
 
@@ -21,7 +21,7 @@ public class DrawStrategySupport extends DrawConfig {
         return strategyRepository.queryStrategyRich(strategyId);
     }
 
-    protected Award queryAwardInfoByAwardId(String awardId) {
+    protected AwardBriefVO queryAwardInfoByAwardId(String awardId) {
         return strategyRepository.queryAwardInfo(awardId);
     }
 }
