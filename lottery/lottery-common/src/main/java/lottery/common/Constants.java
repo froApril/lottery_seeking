@@ -6,8 +6,8 @@ public class Constants {
         SUCCESS("0000", "Success"),
         UN_ERROR("0001","Unknown failure"),
         ILLEGAL_PARAMETER("0002","Invalid argument"),
-        INDEX_DUP("0003","Primary key conflict");
-
+        INDEX_DUP("0003","Primary key conflict"),
+        NO_UPDATE("0004","SQL operation not updated"),;
 
         private String code;
         private String info;

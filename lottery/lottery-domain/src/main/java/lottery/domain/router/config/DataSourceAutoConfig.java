@@ -1,12 +1,12 @@
-package lottery.router.config;
+package lottery.domain.router.config;
 
-import lottery.router.DBRouterConfig;
-import lottery.router.DBRouterJoinPoint;
-import lottery.router.dynamic.DynamicDataSource;
-import lottery.router.dynamic.DynamicMybatisPlugin;
-import lottery.router.strategy.IDBRouterStrategy;
-import lottery.router.strategy.impl.DBRouterStrategyHashCode;
-import lottery.router.util.PropertyUtil;
+import lottery.domain.router.DBRouterConfig;
+import lottery.domain.router.DBRouterJoinPoint;
+import lottery.domain.router.dynamic.DynamicDataSource;
+import lottery.domain.router.dynamic.DynamicMybatisPlugin;
+import lottery.domain.router.strategy.IDBRouterStrategy;
+import lottery.domain.router.strategy.impl.DBRouterStrategyHashCode;
+import lottery.domain.router.util.PropertyUtil;
 import org.apache.ibatis.plugin.Interceptor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.EnvironmentAware;

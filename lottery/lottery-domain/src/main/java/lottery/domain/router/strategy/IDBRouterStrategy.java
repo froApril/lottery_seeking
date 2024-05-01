@@ -1,4 +1,4 @@
-package lottery.router.strategy;
+package lottery.domain.router.strategy;
 
 /**
  * @description:

@@ -1,6 +1,6 @@
-package lottery.router.dynamic;
+package lottery.domain.router.dynamic;
 
-import lottery.router.DBContextHolder;
+import lottery.domain.router.DBContextHolder;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 /**

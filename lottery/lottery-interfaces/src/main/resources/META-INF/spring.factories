@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=lottery.router.config.DataSourceAutoConfig
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=lottery.domain.router.config.DataSourceAutoConfig

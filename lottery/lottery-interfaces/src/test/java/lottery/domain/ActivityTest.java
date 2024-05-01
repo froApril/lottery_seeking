@@ -4,11 +4,14 @@ import com.alibaba.fastjson.JSON;
 import lottery.common.Constants;
 import lottery.domain.activity.model.aggregates.ActivityRichConfig;
 import lottery.domain.activity.model.req.ActivityConfigReq;
+import lottery.domain.activity.model.req.PartakeReq;
+import lottery.domain.activity.model.res.PartakeResult;
 import lottery.domain.activity.model.vo.ActivityVO;
 import lottery.domain.activity.model.vo.AwardVO;
 import lottery.domain.activity.model.vo.StrategyDetailVO;
 import lottery.domain.activity.model.vo.StrategyVO;
 import lottery.domain.activity.service.deploy.IActivityDeploy;
+import lottery.domain.activity.service.partake.IActivityPartake;
 import lottery.domain.activity.service.stateflow.IStateHandler;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,6 +42,9 @@ public class ActivityTest {
 
     @Resource
     private IStateHandler stateHandler;
+
+    @Resource
+    private IActivityPartake activityPartake;
 
     //
 //    @Resource
@@ -170,5 +176,13 @@ public class ActivityTest {
         logger.info("审核通过，测试：{}", JSON.toJSONString(stateHandler.checkPass(activityId, Constants.ActivityState.ARRAIGNMENT)));
         logger.info("运行活动，测试：{}", JSON.toJSONString(stateHandler.doing(activityId, Constants.ActivityState.PASS)));
         logger.info("二次提审，测试：{}", JSON.toJSONString(stateHandler.checkPass(activityId, Constants.ActivityState.EDIT)));
+    }
+
+    @Test
+    public void test_activityPartake() {
+        PartakeReq req = new PartakeReq("Uhdgkw766120d", activityId);
+        PartakeResult res = activityPartake.doPartake(req);
+        logger.info("请求参数：{}", JSON.toJSONString(req));
+        logger.info("测试结果：{}", JSON.toJSONString(res));
     }
 }

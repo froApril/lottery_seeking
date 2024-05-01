@@ -1,7 +1,7 @@
-package lottery.router.dynamic;
+package lottery.domain.router.dynamic;
 
-import lottery.router.DBContextHolder;
-import lottery.router.annotation.DBRouterStrategy;
+import lottery.domain.router.DBContextHolder;
+import lottery.domain.router.annotation.DBRouterStrategy;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -15,7 +15,6 @@ import org.apache.ibatis.reflection.SystemMetaObject;
 
 import java.lang.reflect.Field;
 import java.sql.Connection;
-import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

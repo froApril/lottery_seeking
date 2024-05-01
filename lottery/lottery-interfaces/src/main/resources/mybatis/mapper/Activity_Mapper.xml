@@ -15,15 +15,17 @@
         <result column="creator" property="creator"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
+        <result column="strategy_id" property="strategyId"/>
+        <result column="stock_surplus_count" property="stockSurplusCount"/>
     </resultMap>
 
     <insert id="insert" parameterType="lottery.infrastructure.po.activity.Activity">
         INSERT INTO activity
         (activity_id, activity_name, activity_desc, begin_date_time, end_date_time,
-         stock_count, take_count, state, creator, create_time, update_time)
+         stock_count, take_count, state, creator, create_time, update_time, strategy_id, stock_surplus_count)
         VALUES
             (#{activityId}, #{activityName}, #{activityDesc}, #{beginDateTime}, #{endDateTime},
-             #{stockCount}, #{takeCount}, #{state}, #{creator}, now(), now())
+             #{stockCount}, #{takeCount}, #{state}, #{creator}, now(), now(), #{strategyId}, #{stockSurplusCount})
     </insert>
 
     <update id="alterState" parameterType="lottery.domain.activity.model.vo.AlterStateVO">
@@ -34,9 +36,13 @@
 
     <select id="queryActivityById" parameterType="java.lang.Long" resultMap="activityMap">
         SELECT activity_id, activity_name, activity_desc, begin_date_time, end_date_time,
-               stock_count, take_count, state, creator, create_time, update_time
+               stock_count, take_count, state, creator, create_time, update_time, strategy_id, stock_surplus_count
         FROM activity
         WHERE activity_id = #{activityId}
     </select>
 
+    <update id="subtractionActivityStock" parameterType="java.lang.Long">
+        UPDATE activity SET stock_surplus_count = stock_surplus_count - 1
+        WHERE activity_id = #{activityId} AND stock_surplus_count > 0
+    </update>
 </mapper>
