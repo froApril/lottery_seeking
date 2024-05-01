@@ -1,8 +1,7 @@
 package lottery.infrastructure.dao.user;
 
 import lottery.infrastructure.po.user.UserTakeActivity;
-//import cn.bugstack.middleware.db.router.annotation.DBRouter;
-import lottery.router.annotation.DBRouter;
+import lottery.domain.router.annotation.DBRouter;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

@@ -1,12 +1,10 @@
 package lottery.infrastructure.dao.user;
 
-//import cn.bugstack.middleware.db.router.annotation.DBRouter;
-//import cn.bugstack.middleware.db.router.annotation.DBRouterStrategy;
 
+import lottery.domain.router.annotation.DBRouter;
+import lottery.domain.router.annotation.DBRouterStrategy;
 import lottery.infrastructure.po.user.UserStrategyExport;
 
-import lottery.router.annotation.DBRouter;
-import lottery.router.annotation.DBRouterStrategy;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

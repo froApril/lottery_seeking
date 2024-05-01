@@ -42,4 +42,8 @@ public class Activity {
     // 修改时间
     private Date updateTime;
 
+    private Long strategyId;
+
+    private Integer stockSurplusCount;
+
 }

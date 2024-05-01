@@ -1,18 +1,18 @@
-package lottery.router.strategy.impl;
+package lottery.domain.router.strategy.impl;
 
-import lottery.router.DBContextHolder;
-import lottery.router.DBRouterConfig;
-import lottery.router.strategy.IDBRouterStrategy;
+import lottery.domain.router.DBRouterConfig;
+import lottery.domain.router.DBContextHolder;
+import lottery.domain.router.strategy.IDBRouterStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.annotation.Resource;
+import org.springframework.stereotype.Component;
 
 /**
  * @description:
  * @author：freddie
  * @date: 2024/5/1
  */
+//@Component
 public class DBRouterStrategyHashCode implements IDBRouterStrategy {
 
 

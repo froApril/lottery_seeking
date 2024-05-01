@@ -1,4 +1,4 @@
-package lottery.router.annotation;
+package lottery.domain.router.annotation;
 
 import java.lang.annotation.*;
 

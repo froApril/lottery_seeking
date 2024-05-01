@@ -1,10 +1,8 @@
 package lottery.domain.activity.repository;
 
 import lottery.common.Constants;
-import lottery.domain.activity.model.vo.ActivityVO;
-import lottery.domain.activity.model.vo.AwardVO;
-import lottery.domain.activity.model.vo.StrategyDetailVO;
-import lottery.domain.activity.model.vo.StrategyVO;
+import lottery.domain.activity.model.req.PartakeReq;
+import lottery.domain.activity.model.vo.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,4 +24,8 @@ public interface IActivityRepository {
     void addStrategyDetailList(List<StrategyDetailVO> strategyDetailVOList);
 
     boolean alterStatus(Long activityId, Enum<Constants.ActivityState> before, Enum<Constants.ActivityState> after);
+
+    ActivityBillVO queryActivityBill(PartakeReq req);
+
+    int subtractionActivityStock(Long activityId);
 }

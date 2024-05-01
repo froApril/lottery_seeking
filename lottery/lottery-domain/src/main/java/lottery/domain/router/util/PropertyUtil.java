@@ -1,4 +1,4 @@
-package lottery.router.util;
+package lottery.domain.router.util;
 
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.PropertyResolver;

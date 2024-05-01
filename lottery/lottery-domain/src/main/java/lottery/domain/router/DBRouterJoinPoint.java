@@ -1,7 +1,10 @@
-package lottery.router;
+package lottery.domain.router;
 
-import lottery.router.annotation.DBRouter;
-import lottery.router.strategy.IDBRouterStrategy;
+import lottery.domain.router.annotation.DBRouter;
+import lottery.domain.router.strategy.IDBRouterStrategy;
+
+//import cn.bugstack.middleware.db.router.annotation.DBRouter;
+//import cn.bugstack.middleware.db.router.strategy.IDBRouterStrategy;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -33,7 +36,7 @@ public class DBRouterJoinPoint {
     }
 
 
-    @Pointcut("@annotation(lottery.router.annotation.DBRouter)")
+    @Pointcut("@annotation(lottery.domain.router.annotation.DBRouter)")
     public void aopPoint(){
 
     }
