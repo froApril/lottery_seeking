@@ -11,14 +11,14 @@ public class DBRouterConfig {
 
     private int tbCount;
 
-    private String routeKey;
+    private String routerKey;
 
     public DBRouterConfig() {}
 
-    public DBRouterConfig(int dbCount, int tbCount, String routeKey) {
+    public DBRouterConfig(int dbCount, int tbCount, String routerKey) {
         this.dbCount = dbCount;
         this.tbCount = tbCount;
-        this.routeKey = routeKey;
+        this.routerKey = routerKey;
     }
 
     public int getDbCount() {
@@ -37,11 +37,11 @@ public class DBRouterConfig {
         this.tbCount = tbCount;
     }
 
-    public String getRouteKey() {
-        return routeKey;
+    public String getRouterKey() {
+        return routerKey;
     }
 
-    public void setRouteKey(String routeKey) {
-        this.routeKey = routeKey;
+    public void setRouterKey(String routerKey) {
+        this.routerKey = routerKey;
     }
 }
