@@ -1,12 +1,21 @@
 package lottery.router.config;
 
+import lottery.router.DBRouterConfig;
+import lottery.router.DBRouterJoinPoint;
 import lottery.router.dynamic.DynamicDataSource;
+import lottery.router.dynamic.DynamicMybatisPlugin;
+import lottery.router.strategy.IDBRouterStrategy;
+import lottery.router.strategy.impl.DBRouterStrategyHashCode;
 import lottery.router.util.PropertyUtil;
+import org.apache.ibatis.plugin.Interceptor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -32,6 +41,38 @@ public class DataSourceAutoConfig  implements EnvironmentAware {
 
     private String routerKey;
 
+    @Bean
+    public DBRouterConfig dbRouterConfig() {
+        return new DBRouterConfig(dbCount, tbCount, routerKey);
+    }
+
+    @Bean
+    public IDBRouterStrategy dbRouterStrategy(DBRouterConfig dbRouterConfig) {
+        return new DBRouterStrategyHashCode(dbRouterConfig);
+    }
+
+    @Bean
+    public Interceptor plugin() {
+        return new DynamicMybatisPlugin();
+    }
+
+    @Bean(name = "db-router-point")
+    @ConditionalOnMissingBean
+    public DBRouterJoinPoint point(DBRouterConfig dbRouterConfig, IDBRouterStrategy dbRouterStrategy) {
+        return new DBRouterJoinPoint(dbRouterConfig, dbRouterStrategy);
+    }
+
+    @Bean
+    public TransactionTemplate transactionTemplate(DataSource dataSource) {
+        DataSourceTransactionManager dataSourceTransactionManager = new DataSourceTransactionManager();
+        dataSourceTransactionManager.setDataSource(dataSource);
+
+        TransactionTemplate transactionTemplate = new TransactionTemplate();
+        transactionTemplate.setTransactionManager(dataSourceTransactionManager);
+        transactionTemplate.setPropagationBehaviorName("PROPAGATION_REQUIRED");
+        return transactionTemplate;
+    }
+
 
     @Bean
     public DataSource dataSource() {
@@ -55,7 +96,7 @@ public class DataSourceAutoConfig  implements EnvironmentAware {
         tbCount = Integer.valueOf(environment.getProperty(prefix + "tbCount"));
         routerKey = environment.getProperty(prefix + "routerKey");
 
-        String dataSources = environment.getProperty(prefix + "lists");
+        String dataSources = environment.getProperty(prefix + "list");
         assert dataSources != null;
         for (String dbInfo : dataSources.split(",")) {
             Map<String, Object> dataSourceProps = PropertyUtil.handle(environment, prefix + dbInfo, Map.class);

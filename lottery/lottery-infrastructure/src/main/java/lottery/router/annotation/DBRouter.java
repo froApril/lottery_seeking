@@ -8,7 +8,7 @@ import java.lang.annotation.*;
  * @date: 2024/4/26
  */
 @Documented
-@Retention(RetentionPolicy.CLASS)
+@Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})
 public @interface DBRouter {
 

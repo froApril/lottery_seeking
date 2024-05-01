@@ -5,6 +5,7 @@ import lottery.router.strategy.IDBRouterStrategy;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.aspectj.lang.annotation.Pointcut;
@@ -17,6 +18,7 @@ import java.lang.reflect.Field;
  * @author：freddie
  * @date: 2024/5/1
  */
+@Aspect
 public class DBRouterJoinPoint {
 
     private Logger logger = LoggerFactory.getLogger(DBRouterJoinPoint.class);
@@ -24,11 +26,12 @@ public class DBRouterJoinPoint {
     private DBRouterConfig dbRouterConfig;
 
     private IDBRouterStrategy dbRouterStrategy;
-
+//
     public DBRouterJoinPoint(DBRouterConfig dbRouterConfig, IDBRouterStrategy dbRouterStrategy) {
         this.dbRouterConfig = dbRouterConfig;
         this.dbRouterStrategy = dbRouterStrategy;
     }
+
 
     @Pointcut("@annotation(lottery.router.annotation.DBRouter)")
     public void aopPoint(){
